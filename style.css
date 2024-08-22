@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: black;
+  min-height: 100vh;
+}
+header,
+footer {
+  color: black;
+  background-color: red;
+}
+main {
+  flex: 1;
+}
