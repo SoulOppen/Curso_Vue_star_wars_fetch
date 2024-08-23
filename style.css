@@ -16,22 +16,53 @@ footer {
   background-color: red;
 }
 main {
+  display: flex;
   flex: 1;
+  align-items: center;
 }
 header,
 footer {
   text-align: center;
 }
+section {
+  padding: 1vh 1.5vw;
+}
 .section__item {
+  display: flex;
+  width: 100%;
+}
+.section__importance {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 5vw;
+  border-right: 1px solid white;
+}
+.circleYellow {
+  position: absolute;
+  background-color: yellow;
+  border: 0.0625rem solid gold;
+  border-radius: 100%;
+  width: 1vw;
+  aspect-ratio: 1/1;
+  transform: translateX(250%);
+}
+.section__cards {
+  flex: 1;
   display: grid;
+  padding: 0 1%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
 .section__card {
   display: flex;
   background: white;
-  box-shadow: 2px 2px 2px white, -1px 1px 2px white, -1px -1px 2px white,
-    1px -1px 2px white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5),
+    -2px 2px 5px rgba(255, 255, 255, 0.5), 2px -2px 5px rgba(255, 255, 255, 0.5),
+    -2px -2px 5px rgba(255, 255, 255, 0.5);
   margin: 1vh auto;
   padding: 2% 1%;
   min-height: 3rem;
