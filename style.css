@@ -55,6 +55,7 @@ section {
   padding: 0 1%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  gap: 1%;
 }
 .section__card {
   display: flex;

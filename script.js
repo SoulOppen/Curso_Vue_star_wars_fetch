@@ -23,7 +23,23 @@ function characterSearch(id) {
       console.error(error);
     });
 }
+const addCard = ($node, obj, newClass = "") => {
+  let $card = document.createElement("div");
+  $card.classList.add("section__card");
 
+  $card.innerHTML = `
+    <div class="section__circle">
+      <div class="circle ${newClass}"></div>
+    </div>
+    <div class="section__text">
+      <p class="text__bold">${obj.name}</p>
+      <p>
+        Altura: ${obj.height}cm Peso: ${obj.mass}kg
+      </p>
+    </div>
+  `;
+  $node.parentNode.append($card);
+};
 function* mainGenerator() {
   for (let index = 1; index < 6; index++) {
     yield index;
@@ -49,21 +65,27 @@ let otherAux = other.next();
 
 $mainCharactersCard.addEventListener("mouseenter", () => {
   if (!mainAux.done) {
-    characterSearch(mainAux.value).then((data) => console.log(data));
+    characterSearch(mainAux.value).then((data) =>
+      addCard($mainCharactersCard, data)
+    );
     mainAux = main.next();
   }
 });
 
 $secondaryCharactersCard.addEventListener("mouseenter", () => {
   if (!secondaryAux.done) {
-    characterSearch(secondaryAux.value).then((data) => console.log(data));
+    characterSearch(secondaryAux.value).then((data) =>
+      addCard($secondaryCharactersCard, data, "circle--limegreen")
+    );
     secondaryAux = secondary.next();
   }
 });
 
 $otherCharactersCard.addEventListener("mouseenter", () => {
   if (!otherAux.done) {
-    characterSearch(otherAux.value).then((data) => console.log(data));
+    characterSearch(otherAux.value).then((data) =>
+      addCard($otherCharactersCard, data, "circle--skyblue")
+    );
     otherAux = other.next();
   }
 });
