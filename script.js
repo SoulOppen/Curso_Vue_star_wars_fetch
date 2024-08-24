@@ -24,6 +24,7 @@ function characterSearch(id) {
     });
 }
 const addCard = ($node, obj, newClass = "") => {
+  let { name, height, mass } = obj;
   let $card = document.createElement("div");
   $card.classList.add("section__card");
 
@@ -32,9 +33,9 @@ const addCard = ($node, obj, newClass = "") => {
       <div class="circle ${newClass}"></div>
     </div>
     <div class="section__text">
-      <p class="text__bold">${obj.name}</p>
+      <p class="text__bold">${name}</p>
       <p>
-        Altura: ${obj.height}cm Peso: ${obj.mass}kg
+        Altura: ${height} cm Peso: ${mass} kg
       </p>
     </div>
   `;
