@@ -72,13 +72,14 @@ section {
 .section__circle {
   display: flex;
   justify-content: center;
-  width: 10%;
-  height: 100%;
+  align-items: flex-start;
+  width: 20%;
+  aspect-ratio: 2/1;
 }
 .circle {
   background: red;
   border-radius: 100%;
-  height: 50%;
+  width: 50%;
   aspect-ratio: 1/1;
 }
 .circle--limegreen {
