@@ -6,22 +6,14 @@ const url = "https://swapi.dev/api/people/";
 
 const urlCall = (url, id) => `${url}${id}`;
 
-function characterSearch(id) {
-  return fetch(urlCall(url, id))
-    .then((response) => {
-      if (!response.ok) {
-        return Promise.reject(
-          `Error fetching data for ID ${id}: ${response.statusText}`
-        );
-      }
-      return response.json();
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+async function characterSearch(id) {
+  try {
+    let response = await fetch(urlCall(url, id));
+    let data = await response.json();
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
 }
 const addCard = ($node, obj, newClass = "") => {
   let { name, height, mass } = obj;
@@ -64,29 +56,38 @@ function* otherGenerator() {
 let other = otherGenerator();
 let otherAux = other.next();
 
-$mainCharactersCard.addEventListener("mouseenter", () => {
-  if (!mainAux.done) {
-    characterSearch(mainAux.value).then((data) =>
-      addCard($mainCharactersCard, data)
-    );
-    mainAux = main.next();
+$mainCharactersCard.addEventListener("mouseenter", async () => {
+  try {
+    if (!mainAux.done) {
+      let data = await characterSearch(mainAux.value);
+      addCard($mainCharactersCard, data);
+      mainAux = main.next();
+    }
+  } catch (e) {
+    console.log;
   }
 });
 
-$secondaryCharactersCard.addEventListener("mouseenter", () => {
-  if (!secondaryAux.done) {
-    characterSearch(secondaryAux.value).then((data) =>
-      addCard($secondaryCharactersCard, data, "circle--limegreen")
-    );
-    secondaryAux = secondary.next();
+$secondaryCharactersCard.addEventListener("mouseenter", async () => {
+  try {
+    if (!secondaryAux.done) {
+      let data = await characterSearch(secondaryAux.value);
+      addCard($secondaryCharactersCard, data, "circle--limegreen");
+      secondaryAux = secondary.next();
+    }
+  } catch (e) {
+    console.log;
   }
 });
 
-$otherCharactersCard.addEventListener("mouseenter", () => {
-  if (!otherAux.done) {
-    characterSearch(otherAux.value).then((data) =>
-      addCard($otherCharactersCard, data, "circle--skyblue")
-    );
-    otherAux = other.next();
+$otherCharactersCard.addEventListener("mouseenter", async () => {
+  try {
+    if (!otherAux.done) {
+      let data = await characterSearch(otherAux.value);
+      addCard($otherCharactersCard, data, "circle--skyblue");
+      otherAux = other.next();
+    }
+  } catch (e) {
+    console.log;
   }
 });
