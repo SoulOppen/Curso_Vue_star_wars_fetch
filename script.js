@@ -2,7 +2,7 @@ const $mainCharactersCard = document.getElementById("mainCharacters");
 const $secondaryCharactersCard = document.getElementById("secondaryCharacters");
 const $otherCharactersCard = document.getElementById("otherCharacters");
 
-const url = "https://swapi.dev/api/people/";
+const url = "https://swapi.py4e.com/api/people/";
 
 const urlCall = (url, id) => `${url}${id}`;
 
